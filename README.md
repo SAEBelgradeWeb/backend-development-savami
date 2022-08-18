@@ -44,3 +44,7 @@
 - There are a lot of styling bugs (mostly used tailwind components that were slightly edited and therefore breaking them slightly)
 - There might be small redirection errors that I have overlooked. I only had 30 minutes to test the whole functionality.
 - There might be some pages that lack styling
+
+## Styling
+- All styling is done by using the Tailwind CDN
+- Most elements are edited existing tailwind components (to save time)
