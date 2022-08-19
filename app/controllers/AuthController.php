@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Core\App;
 use App\Core\Validation;
 
@@ -112,6 +113,39 @@ class AuthController
         return header('Location: /');
     }
 
+    public function updateProfilePicture()
+    {
+        $dir = getcwd() . "/public/profile-pictures/";
+
+        $filename = str_replace(" ", "_", $_FILES['profile_picture']['name']);
+        $filename = time() . "_" . $filename;
+
+        if (
+            $_FILES['profile_picture']['type'] == 'image/jpeg'
+            || $_FILES['profile_picture']['type'] == 'image/png'
+            || $_FILES['profile_picture']['type'] == 'image/jpg') {
+            if (is_uploaded_file($_FILES['profile_picture']['tmp_name'])) {
+                move_uploaded_file($_FILES['profile_picture']['tmp_name'], $dir . $filename);
+                $_FILES['profile_picture'] = $filename;
+            }
+        } else {
+            $errorMsg = "This filetype is not supported";
+            return view('profile', compact('errorMsg'));
+        }
+
+        $query = "UPDATE users SET profile_picture=? WHERE id=?";
+        App::get('database')->update(
+            $query, [
+                $_FILES['profile_picture'],
+                $_SESSION['user']->id
+            ]);
+
+        sleep(6);
+        $this->logout();
+
+        return view('index');
+    }
+
     public function updateProfile() // Validates profile form
     {
         $validate = new Validation;
@@ -123,8 +157,13 @@ class AuthController
             return view('profile', compact('errorMsg'));
         }
 
-        if (!$validate->validateName(trim($_POST['firstname']), trim($_POST['lastname']))) {
-            $errorMsg = 'First and last name can only contain letters and spaces';
+        if (!$validate->validateFirstName(trim($_POST['firstname']), trim($_POST['lastname']))) {
+            $errorMsg = 'First name can only contain letters and spaces';
+            return view('profile', compact('errorMsg'));
+        }
+
+        if (!$validate->validateLastName(trim($_POST['firstname']), trim($_POST['lastname']))) {
+            $errorMsg = 'Last name can only contain letters and spaces';
             return view('profile', compact('errorMsg'));
         }
 
@@ -156,12 +195,12 @@ class AuthController
         $query = "UPDATE users SET firstname=?, lastname=?, username=?, email=?, password=? WHERE id=?";
         App::get('database')->update(
             $query, [
-                $_POST['firstname'],
-                $_POST['lastname'],
-                $_POST['username'],
-                $_POST['email'],
-                md5($_POST['password']), // Hashed password
-                $_SESSION['user']->id]); // Where ID = ID from currently logged-in user
+            $_POST['firstname'],
+            $_POST['lastname'],
+            $_POST['username'],
+            $_POST['email'],
+            md5($_POST['password']), // Hashed password
+            $_SESSION['user']->id]); // Where ID = ID from currently logged-in user
 
         unset($_POST['passwordCheck']);
 

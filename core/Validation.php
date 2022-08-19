@@ -44,7 +44,7 @@ class Validation
     public function validateUsername($username)
     {
         if (!preg_match('/^[a-zA-Z0-9]{5,20}$/', $username)) return false;// for english chars + numbers only
-    // valid username, alphanumeric & longer than or equals 5 chars
+        // valid username, alphanumeric & longer than or equals 5 chars
         return true;
     }
 

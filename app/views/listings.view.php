@@ -29,9 +29,18 @@ if (!$_SESSION) {
                 <div class="text-xs absolute top-2 right-2">
                     <?php foreach ($users as $user) : ?>
                         <?php if ($user->id == $listing->user_id) : ?>
-                            <!-- Comment below placeholder for user profile picture being displayed in listing view -->
-                            <!--<img class="w-10 h-10 rounded-full mr-4" src="" alt="Avatar of Author">-->
-                            <p class="text-gray-400 text-right text-xs leading-none mb-2"><?= $user->firstname . " " . $user->lastname ?></p>
+
+                            <?php if (isset($user->profile_picture)) : ?>
+                                <img class="h-12 w-12 object-cover rounded-full"
+                                     src="../../public/profile-pictures/<?= $user->profile_picture ?>"
+                                     alt="Picture of <?= $user->firstname . " " . $user->lastname ?>">
+                                <p class="text-gray-400 text-right text-xs leading-none mb-2"><?= $user->firstname . " " . $user->lastname ?></p>
+                            <?php else : ?>
+                                <img class="h-12 w-12 object-cover rounded-full"
+                                     src="../../public/profile-pictures/avatar-placeholder.png"
+                                     alt="Placeholder Profile Picture">
+                                <p class="text-gray-400 text-right text-xs leading-none mb-2"><?= $user->firstname . " " . $user->lastname ?></p>
+                            <?php endif; ?>
                         <?php endif; ?>
                     <?php endforeach; ?>
                     <p class="text-gray-400 align-center text-right">Created at</p>

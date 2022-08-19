@@ -5,6 +5,7 @@ if (!$_SESSION) { // If there is NOT an active logged-in user, go back to home. 
     return redirect('/');
 }
 ?>
+    <!--    Profile Banner    -->
     <div class="w-full relative mt-0 shadow-2xl rounded mb-8 overflow-hidden">
         <div class="top h-64 w-full bg-blue-600 overflow-hidden relative">
             <img src="../../public/images/profile-bg-banner.jpg"
@@ -29,6 +30,7 @@ if (!$_SESSION) { // If there is NOT an active logged-in user, go back to home. 
         </div>
     </div>
 
+    <!--    Error Messages & Warnings      -->
 <?php // If a $message is found (in AuthController) it means there is an error. Displays error message.
 if (isset($errorMsg)) : ?>
     <div class="flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800 my-8">
@@ -47,7 +49,9 @@ if (isset($errorMsg)) : ?>
     </div>
 <?php endif; ?>
 
-    <div id="updateCompleteMsg" class="p-2 bg-green-500 text-white mb-4 hidden w-1/2 mx-auto flex rounded">
+    <!--      JavaScript handled popups      -->
+    <div id="updateCompleteMsg"
+         class="p-4 bg-green-500 text-white mb-4 hidden w-1/2 flex rounded inset-x-0 mx-auto fixed top-20 z-10">
         <div class="flex items-center justify-center w-12 bg-green-500">
             <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z"/>
@@ -57,7 +61,19 @@ if (isset($errorMsg)) : ?>
               onclick="this.parentElement.style.display='none';">User profile updated successfully</span>
     </div>
 
-    <div id="logoutNotif" class="p-2 bg-amber-500 text-white hidden w-1/2 mx-auto flex rounded">
+    <div id="imgUploadMsg"
+         class="p-4 bg-green-500 text-white mb-4 hidden w-1/2 flex rounded inset-x-0 mx-auto fixed top-20 z-10">
+        <div class="flex items-center justify-center w-12 bg-green-500">
+            <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z"/>
+            </svg>
+        </div>
+        <span class="ml-8 text-white font-bold pointer transition delay-30 w-5/6 mx-auto"
+              onclick="this.parentElement.style.display='none';">Image has been updated successfully</span>
+    </div>
+
+    <div id="logoutNotif"
+         class="p-4 bg-amber-500 text-white hidden w-1/2 flex rounded inset-x-0 mx-auto fixed top-40 z-10">
         <div class="flex items-center justify-center w-12 bg-amber-500">
             <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z"/>
@@ -67,6 +83,7 @@ if (isset($errorMsg)) : ?>
               onclick="this.parentElement.style.display='none';">You will be logged out in 5s to apply the changes</span>
     </div>
 
+    <!-- Back Button  -->
     <div class="w-5/6 mx-auto relative">
         <button onclick="history.go(-1);" class="absolute top-10 left-8">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" width="30" height="30">
@@ -77,31 +94,24 @@ if (isset($errorMsg)) : ?>
         </button>
         <h1 class="my-8 mb-12 text-center font-sans font-bold text-3xl text-slate-700">Change profile details</h1>
 
-        <form action="profile/update" method="POST" onsubmit="delay()">
-            <div class="flex justify-center mt-8 mb-8">
-                <div class="rounded-lg shadow-xl bg-gray-50 w-full">
-                    <div class="m-4">
-                        <label class="inline-block mb-2 text-gray-500 w-full">Add a profile picture <span
-                                    class="float-right">Upload Image (JPG, PNG, JPEG)</span></label>
-                        <div class="flex items-center justify-center w-full">
-                            <label class="flex flex-col w-full h-32 border-4 border-dashed transition ease-in-out delay-50 hover:bg-gray-100 hover:border-gray-300">
-                                <div class="flex flex-col items-center justify-center pt-7 cursor-pointer">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                         class="w-12 h-12 text-gray-400 group-hover:text-gray-600" viewBox="0 0 20 20"
-                                         fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                              d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
-                                              clip-rule="evenodd"/>
-                                    </svg>
-                                    <p class="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
-                                        Click here to select a photo</p>
-                                </div>
-                                <input type="file" id="profile_picture" name="profile_picture" class="opacity-0"/>
-                            </label>
-                        </div>
-                    </div>
-                </div>
+        <!--   Profile Picture Upload Form     -->
+        <form action="profile/update/image" method="POST" onsubmit="delay(imgUploadMsg)" enctype="multipart/form-data">
+
+            <label class="block ml-0.5 mb-2 text-sm font-medium text-slate-700" for="profile_picture">Upload Image</label>
+            <input class="block p-2 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer focus:outline-none"
+                   id="profile_picture" name="profile_picture" type="file">
+            <p class="mt-1 text-sm text-slate-700 ml-0.5">Only JPG / PNG</p>
+            <div class="text-center mb-8">
+                <button type="submit"
+                        class="text-white bg-cyan-500 hover:bg-cyan-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold tracking-wide rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center transition ease-in-out delay-50">
+                    Upload Image
+                </button>
             </div>
+        </form>
+
+        <hr class="mb-10">
+        <!--   User Profile Update Form     -->
+        <form action="profile/update" method="POST" onsubmit="delay(updateComplete)" enctype="multipart/form-data">
             <div class="grid md:grid-cols-2 md:gap-6">
                 <div class="relative z-0 mb-6 w-full group">
                     <input type="text" name="firstname" id="firstname"
@@ -167,7 +177,15 @@ if (isset($errorMsg)) : ?>
     </div>
 
     <script>
-        function updateComplete() {
+        function imgUploadMsg() { // Happens when upload image form is submitted
+            let imgUploadMsg = document.querySelector('#imgUploadMsg');
+            let logoutNotif = document.querySelector('#logoutNotif');
+
+            imgUploadMsg.classList.remove('hidden');
+            logoutNotif.classList.remove('hidden');
+        }
+
+        function updateComplete() { // Happens when update user form is submitted
             let updateCompleteMsg = document.querySelector('#updateCompleteMsg');
             let logoutNotif = document.querySelector('#logoutNotif');
 
@@ -175,8 +193,8 @@ if (isset($errorMsg)) : ?>
             logoutNotif.classList.remove('hidden');
         }
 
-        function delay() {
-            setTimeout(updateComplete, 1000);
+        function delay(func) { // Sets for better UX (no overlapping elements)
+            setTimeout(func, 1000);
         }
     </script>
 
