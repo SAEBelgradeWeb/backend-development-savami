@@ -43,6 +43,7 @@
   - New password
 
 ## Unfinished ideas
+- Add image upload to profile page & database
 - ~A small profile div on the user's management page that allows the user to change their name, email and password~
 - Proper register and profile update validation
 - Adding a profile picture to the user
