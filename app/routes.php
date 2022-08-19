@@ -20,8 +20,8 @@ $router->get('logout', 'AuthController@logout'); // Logging out by ending SESSIO
 /* ============================================
  *                  Profile
 ============================================ */
-$router->get('profile', 'AuthController@openProfileForm', 'auth');
-$router->post('profile/update', 'AuthController@updateProfile', 'auth');
+$router->get('profile', 'AuthController@openProfileForm', 'auth'); // Opens profile form
+$router->post('profile/update', 'AuthController@updateProfile', 'auth'); // Updates profile
 
 /* ============================================
  *             User Management Panel

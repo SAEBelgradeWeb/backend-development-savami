@@ -26,149 +26,68 @@ if (isset($errorMsg)) : ?>
     </div>
 <?php endif; ?>
 
-<h1 class="text-xl text-center mt-8">Register</h1>
-<div class="block p-6 rounded-lg shadow-lg bg-white max-w-md mx-auto mb-20">
-    <form method="POST" action="/register">
-        <div class="grid grid-cols-2 gap-4">
-            <div class="form-group mb-6">
-                <label for="firstname"></label>
-                <input type="text" id="firstname" name="firstname"
-                       class="form-control
-                       block
-                       w-full
-                       px-3
-                       py-1.5
-                       text-base
-                       font-normal
-                       text-gray-700
-                       bg-white bg-clip-padding
-                       border border-solid border-gray-300
-                       rounded
-                       transition
-                       ease-in-out
-                       m-0
-                       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                       placeholder="First name">
+
+<div class="w-1/2 mx-auto">
+        <h1 class="my-8 mb-12 text-center font-sans font-bold text-3xl text-slate-700">Register</h1>
+
+        <form action="/register" method="POST">
+        <div class="grid md:grid-cols-2 md:gap-6">
+            <div class="relative z-0 mb-6 w-full group">
+                <input type="text" name="firstname" id="firstname"
+                       class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                       placeholder=" " value="<?php if(isset($_POST['firstname'])) { echo $_POST['firstname']; }?>"/>
+                <label for="firstname"
+                       class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">                   First name</label>
             </div>
-            <div class="form-group mb-6">
-                <label for="lastname"></label>
-                <input type="text" id="lastname" name="lastname"
-                       class="form-control
-                       block
-                       w-full
-                       px-3
-                       py-1.5
-                       text-base
-                       font-normal
-                       text-gray-700
-                       bg-white bg-clip-padding
-                       border border-solid border-gray-300
-                       rounded
-                       transition
-                       ease-in-out
-                       m-0
-                       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                       placeholder="Last name">
+            <div class="relative z-0 mb-6 w-full group">
+                <input type="text" name="lastname" id="lastname"
+                       class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                       placeholder=" " value="<?php if(isset($_POST['lastname'])) { echo $_POST['lastname']; }?>"/>
+                <label for="lastname"
+                       class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                    Last name</label>
             </div>
         </div>
-        <div class="form-group mb-6">
-            <label for="username"></label>
-            <input type="text" id="username" name="username"
-                    class="form-control block
-                    w-full
-                    px-3
-                    py-1.5
-                    text-base
-                    font-normal
-                    text-gray-700
-                    bg-white bg-clip-padding
-                    border border-solid border-gray-300
-                    rounded
-                    transition
-                    ease-in-out
-                    m-0
-                    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    placeholder="Username">
+        <div class="grid md:grid-cols-2 md:gap-6">
+            <div class="relative z-0 mb-6 w-full group">
+                <input type="text" name="username" id="username"
+                       class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                       placeholder=" " value="<?php if(isset($_POST['username'])) { echo $_POST['username']; }?>"/>
+                <label for="username"
+                       class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                    Username</label>
+            </div>
+            <div class="relative z-0 mb-6 w-full group">
+                <input type="text" name="email" id="email"
+                       class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                       placeholder=" " value="<?php if(isset($_POST['email'])) { echo $_POST['email']; }?>"/>
+                <label for="email"
+                       class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">                    E-mail address</label>
+            </div>
         </div>
-        <div class="form-group mb-6">
-            <label for="email"></label>
-            <input type="email" id="email" name="email"
-                    class="form-control block
-                    w-full
-                    px-3
-                    py-1.5
-                    text-base
-                    font-normal
-                    text-gray-700
-                    bg-white bg-clip-padding
-                    border border-solid border-gray-300
-                    rounded
-                    transition
-                    ease-in-out
-                    m-0
-                    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    placeholder="Email address">
+        <div class="relative z-0 mb-6 w-full group">
+            <input type="password" name="password" id="password"
+                   class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                   placeholder=" "/>
+            <label for="password"
+                   class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password (Required: Min. 8 characters - Capital, Number & Special)</label>
         </div>
-        <div class="form-group mb-6">
-            <label for="password"></label>
-            <input type="password" id="password" name="password"
-                    class="form-control block
-                    w-full
-                    px-3
-                    py-1.5
-                    text-base
-                    font-normal
-                    text-gray-700
-                    bg-white bg-clip-padding
-                    border border-solid border-gray-300
-                    rounded
-                    transition
-                    ease-in-out
-                    m-0
-                    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    placeholder="Password">
+        <div class="relative z-0 mb-6 w-full group">
+            <input type="password" name="passwordCheck" id="passwordCheck"
+                   class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                   placeholder=" "/>
+            <label for="passwordCheck"
+                   class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                Confirm password</label>
         </div>
-        <div class="form-group mb-6">
-            <label for="passwordCheck"></label>
-            <input type="password" id="passwordCheck" name="passwordCheck"
-                    class="form-control block
-                    w-full
-                    px-3
-                    py-1.5
-                    text-base
-                    font-normal
-                    text-gray-700
-                    bg-white bg-clip-padding
-                    border border-solid border-gray-300
-                    rounded
-                    transition
-                    ease-in-out
-                    m-0
-                    focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    placeholder="Confirm password">
+
+        <div class="text-center my-8 w-full mx-auto">
+            <button type="submit"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 transition ease-in-out delay-50">
+                Register
+            </button>
         </div>
-        <button type="submit"
-                  class="
-                  w-full
-                  px-6
-                  py-2.5
-                  bg-blue-600
-                  text-white
-                  font-medium
-                  text-xs
-                  leading-tight
-                  uppercase
-                  rounded
-                  shadow-md
-                  hover:bg-blue-700 hover:shadow-lg
-                  focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-                  active:bg-blue-800 active:shadow-lg
-                  transition
-                  duration-150
-                  ease-in-out">
-            Register account
-        </button>
-    </form>
-</div>
+        </form>
+    </div>
 
 <?php require('partials/footer.php');

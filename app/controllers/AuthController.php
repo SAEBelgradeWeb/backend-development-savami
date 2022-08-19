@@ -22,6 +22,7 @@ class AuthController
     {
         $errorMsg = null;
         return view('profile', compact('errorMsg'));
+
     }
 
     // Register new user & validation
@@ -37,17 +38,37 @@ class AuthController
             return view('register', compact('errorMsg'));
         }
 
+        if (!$validate->validateFirstName(trim($_POST['firstname']))) {
+            $errorMsg = 'First name can only contain letters and spaces';
+            return view('register', compact('errorMsg'));
+        }
+
+        if (!$validate->validateLastName(trim($_POST['lastname']))) {
+            $errorMsg = 'Last name can only contain letters and spaces';
+            return view('register', compact('errorMsg'));
+        }
+
+        if (!$validate->validateUsername(trim($_POST['username']))) {
+            $errorMsg = 'Username can only contain alphanumerics and must be 5-20 characters long';
+            return view('register', compact('errorMsg'));
+        }
+
         if (!$validate->matchPassword(trim($_POST['password']), trim($_POST['passwordCheck']))) {
             $errorMsg = 'Passwords do not match, please check if you typed them correctly';
             return view('register', compact('errorMsg'));
         }
 
         if (!$validate->validatePassword(trim($_POST['password']))) {
-            $errorMsg = 'Password must be at least 8 characters long';
+            $errorMsg = 'Password must be at least 8 characters long and should include at least 1 upper case letter, one number, and one special character';
             return view('register', compact('errorMsg'));
         }
 
-        if (!$validate->validateEmail($_POST['email'])) {
+        if (!$validate->validateEmail(trim($_POST['email']))) {
+            $errorMsg = 'Invalid e-mail format, please enter a proper e-mail address';
+            return view('register', compact('errorMsg'));
+        }
+
+        if (!$validate->checkIfEmailExists($_POST['email'])) {
             $errorMsg = 'Email already exists';
             return view('register', compact('errorMsg'));
         }
@@ -91,7 +112,7 @@ class AuthController
         return header('Location: /');
     }
 
-    public function updateProfile()
+    public function updateProfile() // Validates profile form
     {
         $validate = new Validation;
 
@@ -99,11 +120,17 @@ class AuthController
 
         if (!$validate->checkIfEmpty($_POST)) {
             $errorMsg = 'Fields cannot be empty';
-            if ($_SESSION['user']->role_id == '1') {
-                return view('admin-profile', compact('errorMsg'));
-            } else {
-                return view('profile', compact('errorMsg'));
-            }
+            return view('profile', compact('errorMsg'));
+        }
+
+        if (!$validate->validateName(trim($_POST['firstname']), trim($_POST['lastname']))) {
+            $errorMsg = 'First and last name can only contain letters and spaces';
+            return view('profile', compact('errorMsg'));
+        }
+
+        if (!$validate->validateUsername(trim($_POST['username']))) {
+            $errorMsg = 'Username can only contain alphanumerics and must be 5-20 characters long';
+            return view('profile', compact('errorMsg'));
         }
 
         if (!$validate->matchPassword(trim($_POST['password']), trim($_POST['passwordCheck']))) {
@@ -112,13 +139,18 @@ class AuthController
         }
 
         if (!$validate->validatePassword(trim($_POST['password']))) {
-            $errorMsg = 'Password must be at least 8 characters long';
+            $errorMsg = 'Password must be at least 8 characters long and should include at least 1 upper case letter, one number, and one special character';
             return view('profile', compact('errorMsg'));
         }
 
-        if (!$validate->validateEmail($_POST['email'])) {
+        if (!$validate->validateEmail(trim($_POST['email']))) {
+            $errorMsg = 'Invalid e-mail format, please enter a proper e-mail address';
+            return view('profile', compact('errorMsg'));
+        }
+
+        if (!$validate->checkIfEmailExists($_POST['email'])) {
             $errorMsg = 'Email already exists';
-            return view('register', compact('errorMsg'));
+            return view('profile', compact('errorMsg'));
         }
 
         $query = "UPDATE users SET firstname=?, lastname=?, username=?, email=?, password=? WHERE id=?";
@@ -136,10 +168,9 @@ class AuthController
         sleep(6);
         $this->logout();
 
+
         return view('index');
     }
-
-
 
     public function logout()
     {
