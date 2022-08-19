@@ -35,6 +35,13 @@
 - Ability to see all their listings on the management panel and add/edit/delete them
 - Ability to edit/delete from the "Check all listings" 
 
+## Profile Page
+- Allows the currently logged in user to change his/her account details.
+  - Name
+  - Username
+  - Email
+  - New password
+
 ## Unfinished ideas
 - ~A small profile div on the user's management page that allows the user to change their name, email and password~
 - Proper register and profile update validation
