@@ -50,6 +50,7 @@
 ## Styling
 - All styling is done by using the Tailwind CDN
 - Most elements are edited existing tailwind components (to save time)
+  - Source of the components was mostly flowbite.com, tailwindcomponents.com, and the Tailwind docs/components itself, but in some cases other websites were used.
 
 ## JavaScript
 JavaScript was not used much throughout the project. It was used in the following cases:
