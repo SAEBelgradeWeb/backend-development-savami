@@ -15,7 +15,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
--- Dumping database structure for cars
+-- Dumping database structure for job_listings
 CREATE DATABASE IF NOT EXISTS `job_listings` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `job_listings`;
 
