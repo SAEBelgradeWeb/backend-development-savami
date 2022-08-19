@@ -72,20 +72,4 @@ class UsersListingsController
 
         return redirect('user/listings');
     }
-
-    public function openProfileForm()
-    {
-        $query = 'SELECT * FROM users WHERE id = ' . $_SESSION['user']->id;
-        $user = App::get('database')->sql($query);
-
-        return view('profile', compact('user'));
-    }
-
-    public function updateUserProfile()
-    {
-        $query = "UPDATE users SET firstname=?, lastname=?, username=?, email=?, password=? WHERE id=?";
-        App::get('database')->update($query, [$_POST['firstname'], $_POST['lastname'], $_POST['username'], $_POST['email'], $_POST['password'], $_SESSION['user']->id]);
-
-        return redirect('user/profile');
-    }
 }
