@@ -64,5 +64,9 @@
            class="text-gray-500 font-mono text-xl bg-gray-200 p-3 rounded-md hover:shadow-md">Go back to previous
             page</a>
     </div>
+    <div class="mt-10 text-center">
+        <a href="/"
+           class="text-gray-500 font-mono text-xl bg-gray-200 p-3 rounded-md hover:shadow-md">Or go back home</a>
+    </div>
 </div>
 <?php require('partials/footer.php');
