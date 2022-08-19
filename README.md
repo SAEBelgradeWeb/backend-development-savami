@@ -7,7 +7,7 @@
 ### Login Information
 ##### To log in as admin user:
 - sava@outlook.com
-- 12345678
+- Adminpass123!
 
 ##### To log in as a regular user:
 - Create an account by using the registration form
@@ -43,11 +43,11 @@
   - New password
 
 ## Unfinished ideas
-- Add image upload to profile page & database
+- ~Add image upload to profile page & database~
 - ~A small profile div on the user's management page that allows the user to change their name, email and password~
-- Proper register and profile update validation
-- Adding a profile picture to the user
-- Displaying the profile picture on the "Check All Listings" page
+- ~Proper register and profile update validation~
+- ~Adding a profile picture to the user~
+- ~Displaying the profile picture on the "Check All Listings" page~
 - Being able to change the user role through the admin panel
 - Being able to fully manage the database through the admin panel, without having to use a database client
 - ~Changing user information (name, username, email, password)~
@@ -67,3 +67,4 @@ JavaScript was not used much throughout the project. It was used in the followin
   - Message 1: Confirms the changes have been made successfully
   - Message 2: Notifies the user they will be logged out to apply the changes
   - Proceeds to kill the session and redirects back to the home page
+- Displaying messages when uploading image
