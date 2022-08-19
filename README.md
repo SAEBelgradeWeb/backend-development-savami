@@ -7,6 +7,7 @@
   - For example: You enter wrong format in the form and receive an error the path will be /profile/update
   - When submitting the form another time, the URL path will be /profile/profile/update resulting in a 404 page.
 - All listings page edit/delete buttons get duplicated because of user profile picture
+- Registration & profile update form validation does not scan for existing e-mail adresses properly
 
 ### Login Information
 ##### To log in as admin user:
