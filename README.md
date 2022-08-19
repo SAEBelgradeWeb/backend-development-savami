@@ -48,6 +48,7 @@
   - Add a profile picture
 
 ## Unfinished ideas
+- Removing old not-in-use profile pictures
 - ~Add image upload to profile page & database~
 - ~A small profile div on the user's management page that allows the user to change their name, email and password~
 - ~Proper register and profile update validation~
