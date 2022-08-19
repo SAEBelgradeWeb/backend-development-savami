@@ -1,12 +1,17 @@
 <?php require('partials/head.php') ?>
 
 <div class="container mx-auto">
-    <h2 class="my-4 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
-        Welcome to your management panel
-        <span class="text-cyan-500"><?= $_SESSION['user']->firstname . ' ' . $_SESSION['user']->lastname ?></span>
-    </h2>
-    <p class="text-xs">Here you can see an overview of all your listings. You can either add new listings, edit, or delete them.</p>
-    <p class="text-xs">Be careful, though! Once deleted it cannot be recovered.</p>
+    <div class="text-center">
+        <h2 class="mt-8 mb-4 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
+            Welcome to your management panel
+            <span class="text-cyan-500"><?= $_SESSION['user']->firstname . ' ' . $_SESSION['user']->lastname ?></span>
+        </h2>
+        <p class="text-xs">Here you can see an overview of all your listings. You can either add new listings,
+            edit,
+            or
+            delete them.</p>
+        <p class="text-xs">Be careful, though! Once deleted it cannot be recovered.</p>
+    </div>
     <div class="body-font overflow-hidden">
         <div class="container py-12 mx-auto">
 
@@ -17,7 +22,8 @@
                     </h1>
                 </div>
                 <div>
-                    <a href="/user/create" class="inline-flex items-center justify-center w-10 h-10 ml-3 bg-indigo-400 hover:bg-indigo-500 rounded">
+                    <a href="/user/create"
+                       class="inline-flex items-center justify-center w-10 h-10 ml-3 bg-indigo-400 hover:bg-indigo-500 rounded">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                              width="32" height="32"
                              viewBox="0 0 32 32"

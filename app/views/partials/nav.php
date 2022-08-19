@@ -14,7 +14,7 @@
            border-0
            py-1
            px-3
-           font-bold
+           font-semibold
            focus:outline-none
            hover:bg-cyan-600
            transition-colors ease-in-out delay-50
@@ -88,6 +88,25 @@
            md:mt-0">
                     Admin Panel
                 </a>
+                <a href="/profile"
+                   class="inline-flex
+           items-center
+           text-white
+           font-semibold
+           bg-amber-500
+           border-0
+           py-1
+           px-3
+           focus:outline-none
+           hover:bg-amber-600
+           transition ease-in-out delay-50
+           rounded
+           text-base
+           mt-4
+           mr-5
+           md:mt-0">
+                    My Profile
+                </a>
             <?php endif ?>
 
             <?php if ($_SESSION['user']->role_id == '2') : ?>
@@ -109,6 +128,26 @@
            mr-5
            md:mt-0">
                     Manage listings
+                </a>
+
+                <a href="/profile"
+                   class="inline-flex
+           items-center
+           text-white
+           font-semibold
+           bg-amber-500
+           border-0
+           py-1
+           px-3
+           focus:outline-none
+           hover:bg-amber-600
+           transition ease-in-out delay-50
+           rounded
+           text-base
+           mt-4
+           mr-5
+           md:mt-0">
+                    My Profile
                 </a>
             <?php endif ?>
 

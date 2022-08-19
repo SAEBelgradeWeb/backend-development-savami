@@ -18,6 +18,12 @@ class AuthController
         return view('login', compact('errorMsg'));
     }
 
+    public function openProfileForm()
+    {
+        $errorMsg = null;
+        return view('profile', compact('errorMsg'));
+    }
+
     // Register new user & validation
     // Redirects to login page after successful registration
     public function register()
@@ -27,23 +33,23 @@ class AuthController
         $validate->trimPost($_POST);
 
         if (!$validate->checkIfEmpty($_POST)) {
-            $message = 'Fields cannot be empty';
-            return view('register', compact('message'));
+            $errorMsg = 'Fields cannot be empty';
+            return view('register', compact('errorMsg'));
         }
 
         if (!$validate->matchPassword(trim($_POST['password']), trim($_POST['passwordCheck']))) {
-            $message = 'Passwords do not match, please check if you typed them correctly';
-            return view('register', compact('message'));
+            $errorMsg = 'Passwords do not match, please check if you typed them correctly';
+            return view('register', compact('errorMsg'));
         }
 
         if (!$validate->validatePassword(trim($_POST['password']))) {
-            $message = 'Password must be at least 8 characters long';
-            return view('register', compact('message'));
+            $errorMsg = 'Password must be at least 8 characters long';
+            return view('register', compact('errorMsg'));
         }
 
         if (!$validate->validateEmail($_POST['email'])) {
-            $message = 'Email already exists';
-            return view('register', compact('message'));
+            $errorMsg = 'Email already exists';
+            return view('register', compact('errorMsg'));
         }
 
         unset($_POST['passwordCheck']);
@@ -64,18 +70,18 @@ class AuthController
         $user = App::get('database')->select('users', ['email' => $_POST['email']]);
 
         if (!$validate->checkIfEmpty($_POST)) {
-            $message = 'Fields cannot be empty';
-            return view('login', compact('message'));
+            $errorMsg = 'Fields cannot be empty';
+            return view('login', compact('errorMsg'));
         }
 
         if (!$user) {
-            $message = 'User does not exist';
-            return view('login', compact('message'));
+            $errorMsg = 'User does not exist';
+            return view('login', compact('errorMsg'));
         }
 
         if (!$validate->matchPassword($user->password, md5($_POST['password']))) {
-            $message = 'Incorrect password';
-            return view('login', compact('message'));
+            $errorMsg = 'Incorrect password';
+            return view('login', compact('errorMsg'));
         }
 
         unset($user->password);
@@ -84,6 +90,56 @@ class AuthController
 
         return header('Location: /');
     }
+
+    public function updateProfile()
+    {
+        $validate = new Validation;
+
+        $validate->trimPost($_POST);
+
+        if (!$validate->checkIfEmpty($_POST)) {
+            $errorMsg = 'Fields cannot be empty';
+            if ($_SESSION['user']->role_id == '1') {
+                return view('admin-profile', compact('errorMsg'));
+            } else {
+                return view('profile', compact('errorMsg'));
+            }
+        }
+
+        if (!$validate->matchPassword(trim($_POST['password']), trim($_POST['passwordCheck']))) {
+            $errorMsg = 'Passwords do not match, please check if you typed them correctly';
+            return view('profile', compact('errorMsg'));
+        }
+
+        if (!$validate->validatePassword(trim($_POST['password']))) {
+            $errorMsg = 'Password must be at least 8 characters long';
+            return view('profile', compact('errorMsg'));
+        }
+
+        if (!$validate->validateEmail($_POST['email'])) {
+            $errorMsg = 'Email already exists';
+            return view('register', compact('errorMsg'));
+        }
+
+        $query = "UPDATE users SET firstname=?, lastname=?, username=?, email=?, password=? WHERE id=?";
+        App::get('database')->update(
+            $query, [
+                $_POST['firstname'],
+                $_POST['lastname'],
+                $_POST['username'],
+                $_POST['email'],
+                md5($_POST['password']), // Hashed password
+                $_SESSION['user']->id]); // Where ID = ID from currently logged-in user
+
+        unset($_POST['passwordCheck']);
+
+        sleep(6);
+        $this->logout();
+
+        return view('index');
+    }
+
+
 
     public function logout()
     {

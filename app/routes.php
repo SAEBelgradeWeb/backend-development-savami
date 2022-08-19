@@ -18,7 +18,13 @@ $router->post('login', 'AuthController@login'); // Login form POST submission
 $router->get('logout', 'AuthController@logout'); // Logging out by ending SESSION
 
 /* ============================================
- *                  CRUD
+ *                  Profile
+============================================ */
+$router->get('profile', 'AuthController@openProfileForm', 'auth');
+$router->post('profile/update', 'AuthController@updateProfile', 'auth');
+
+/* ============================================
+ *             User Management Panel
 ============================================ */
 $router->get('user/listings', 'UsersListingsController@index', 'auth'); // User manage panel (all user's listings)
 $router->get('user/edit', 'UsersListingsController@edit', 'auth'); // Edit user's listing
