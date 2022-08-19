@@ -37,6 +37,7 @@
 
 ## Unfinished ideas
 - ~A small profile div on the user's management page that allows the user to change their name, email and password~
+- Proper register and profile update validation
 - Adding a profile picture to the user
 - Displaying the profile picture on the "Check All Listings" page
 - Being able to change the user role through the admin panel
