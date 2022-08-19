@@ -4,8 +4,8 @@
 
 ## KNOWN BUGS
 1. When pressing twice on "update profile and log out" on the profile page, it goes to the 404 page
-  - For example: You enter wrong format in the form and receive an error the path will be /profile/update
-  - When submitting the form another time, the URL path will be /profile/profile/update resulting in a 404 page.
+    - For example: You enter wrong format in the form and receive an error the path will be /profile/update
+    - When submitting the form another time, the URL path will be /profile/profile/update resulting in a 404 page.
 2. All listings page edit/delete buttons get duplicated because of user profile picture
 3. Registration & profile update form validation does not scan for existing e-mail adresses properly
 
