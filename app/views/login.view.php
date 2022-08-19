@@ -2,7 +2,6 @@
 require('partials/head.php');
 ?>
 
-
 <?php // Once session stars when logged in, redirects back to home
 if ($_SESSION) {
     return redirect('/');

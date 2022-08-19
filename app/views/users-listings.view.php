@@ -23,7 +23,7 @@
                 </div>
                 <div>
                     <a href="/user/create"
-                       class="inline-flex items-center justify-center w-10 h-10 ml-3 bg-indigo-400 hover:bg-indigo-500 rounded">
+                       class="inline-flex items-center justify-center w-10 h-10 ml-3 bg-green-500 hover:bg-green-600 rounded">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                              width="32" height="32"
                              viewBox="0 0 32 32"

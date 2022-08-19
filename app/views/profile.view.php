@@ -67,94 +67,102 @@ if (isset($errorMsg)) : ?>
               onclick="this.parentElement.style.display='none';">You will be logged out in 5s to apply the changes</span>
     </div>
 
-    <div class="w-5/6 mx-auto">
+    <div class="w-5/6 mx-auto relative">
+        <button onclick="history.go(-1);" class="absolute top-10 left-8">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" width="30" height="30">
+                <path style="fill:#232326"
+                      d="M24 12.001H2.914l5.294-5.295-.707-.707L1 12.501l6.5 6.5.707-.707-5.293-5.293H24v-1z"
+                      data-name="Left"/>
+            </svg>
+        </button>
         <h1 class="my-8 mb-12 text-center font-sans font-bold text-3xl text-slate-700">Change profile details</h1>
 
         <form action="profile/update" method="POST" onsubmit="delay()">
-        <div class="flex justify-center mt-8 mb-8">
-            <div class="rounded-lg shadow-xl bg-gray-50 w-full">
-                <div class="m-4">
-                    <label class="inline-block mb-2 text-gray-500 w-full">Add a profile picture <span class="float-right">Upload Image (JPG, PNG, JPEG)</span></label>
-                    <div class="flex items-center justify-center w-full">
-                        <label class="flex flex-col w-full h-32 border-4 border-dashed transition ease-in-out delay-50 hover:bg-gray-100 hover:border-gray-300">
-                            <div class="flex flex-col items-center justify-center pt-7">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                     class="w-12 h-12 text-gray-400 group-hover:text-gray-600" viewBox="0 0 20 20"
-                                     fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                          d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
-                                          clip-rule="evenodd"/>
-                                </svg>
-                                <p class="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
-                                    Click here to select a photo</p>
-                            </div>
-                            <input type="file" id="profile_picture" name="profile_picture" class="opacity-0"/>
-                        </label>
+            <div class="flex justify-center mt-8 mb-8">
+                <div class="rounded-lg shadow-xl bg-gray-50 w-full">
+                    <div class="m-4">
+                        <label class="inline-block mb-2 text-gray-500 w-full">Add a profile picture <span
+                                    class="float-right">Upload Image (JPG, PNG, JPEG)</span></label>
+                        <div class="flex items-center justify-center w-full">
+                            <label class="flex flex-col w-full h-32 border-4 border-dashed transition ease-in-out delay-50 hover:bg-gray-100 hover:border-gray-300">
+                                <div class="flex flex-col items-center justify-center pt-7 cursor-pointer">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         class="w-12 h-12 text-gray-400 group-hover:text-gray-600" viewBox="0 0 20 20"
+                                         fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                              d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
+                                              clip-rule="evenodd"/>
+                                    </svg>
+                                    <p class="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
+                                        Click here to select a photo</p>
+                                </div>
+                                <input type="file" id="profile_picture" name="profile_picture" class="opacity-0"/>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="grid md:grid-cols-2 md:gap-6">
-            <div class="relative z-0 mb-6 w-full group">
-                <input type="text" name="firstname" id="firstname"
-                       class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                       placeholder=" " value="<?= $_SESSION['user']->firstname ?>"/>
-                <label for="firstname"
-                       class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Change
-                    first name</label>
+            <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 mb-6 w-full group">
+                    <input type="text" name="firstname" id="firstname"
+                           class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                           placeholder=" " value="<?= $_SESSION['user']->firstname ?>"/>
+                    <label for="firstname"
+                           class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Change
+                        first name</label>
+                </div>
+                <div class="relative z-0 mb-6 w-full group">
+                    <input type="text" name="lastname" id="lastname"
+                           class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                           placeholder=" " value="<?= $_SESSION['user']->lastname ?>"/>
+                    <label for="lastname"
+                           class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Change
+                        last name</label>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 mb-6 w-full group">
+                    <input type="text" name="username" id="username"
+                           class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                           placeholder=" " value="<?= $_SESSION['user']->username ?>"/>
+                    <label for="username"
+                           class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Change
+                        Username</label>
+                </div>
+                <div class="relative z-0 mb-6 w-full group">
+                    <input type="text" name="email" id="email"
+                           class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                           placeholder=" " value="<?= $_SESSION['user']->email ?>"/>
+                    <label for="email"
+                           class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Change
+                        e-mail
+                        address</label>
+                </div>
             </div>
             <div class="relative z-0 mb-6 w-full group">
-                <input type="text" name="lastname" id="lastname"
+                <input type="password" name="password" id="password"
                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                       placeholder=" " value="<?= $_SESSION['user']->lastname ?>"/>
-                <label for="lastname"
-                       class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Change
-                    last name</label>
-            </div>
-        </div>
-        <div class="grid md:grid-cols-2 md:gap-6">
-            <div class="relative z-0 mb-6 w-full group">
-                <input type="text" name="username" id="username"
-                       class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                       placeholder=" " value="<?= $_SESSION['user']->username ?>"/>
-                <label for="username"
-                       class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Change
-                    Username</label>
+                       placeholder=" "/>
+                <label for="password"
+                       class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">New
+                    Password</label>
             </div>
             <div class="relative z-0 mb-6 w-full group">
-                <input type="text" name="email" id="email"
+                <input type="password" name="passwordCheck" id="passwordCheck"
                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                       placeholder=" " value="<?= $_SESSION['user']->email ?>"/>
-                <label for="email"
-                       class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Change
-                    e-mail
-                    address</label>
+                       placeholder=" "/>
+                <label for="passwordCheck"
+                       class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm
+                    new
+                    password</label>
             </div>
-        </div>
-        <div class="relative z-0 mb-6 w-full group">
-            <input type="password" name="password" id="password"
-                   class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                   placeholder=" "/>
-            <label for="password"
-                   class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">New
-                Password</label>
-        </div>
-        <div class="relative z-0 mb-6 w-full group">
-            <input type="password" name="passwordCheck" id="passwordCheck"
-                   class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                   placeholder=" "/>
-            <label for="passwordCheck"
-                   class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm
-                new
-                password</label>
-        </div>
 
-        <div class="text-center my-8">
-            <button type="submit"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center transition ease-in-out delay-50">
-                Apply Changes & Log Out
-            </button>
-        </div>
+            <div class="text-center my-8">
+                <button type="submit"
+                        class="text-white bg-cyan-500 hover:bg-cyan-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-bold tracking-wide rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center transition ease-in-out delay-50">
+                    Apply Changes & Log Out
+                </button>
+            </div>
         </form>
     </div>
 

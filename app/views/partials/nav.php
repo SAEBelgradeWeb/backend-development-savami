@@ -33,12 +33,12 @@
            items-center
            text-white
            font-semibold
-           bg-green-400
+           bg-green-500
            border-0
            py-1
            px-3
            focus:outline-none
-           hover:bg-green-500
+           hover:bg-green-600
            transition ease-in-out delay-50
            rounded
            text-base
@@ -74,12 +74,12 @@
            items-center
            text-white
            font-semibold
-           bg-green-400
+           bg-green-500
            border-0
            py-1
            px-3
            focus:outline-none
-           hover:bg-green-500
+           hover:bg-green-600
            transition ease-in-out delay-50
            rounded
            text-base
@@ -115,12 +115,12 @@
            items-center
            text-white
            font-semibold
-           bg-green-400
+           bg-green-500
            border-0
            py-1
            px-3
            focus:outline-none
-           hover:bg-green-500
+           hover:bg-green-600
            transition ease-in-out delay-50
            rounded
            text-base
