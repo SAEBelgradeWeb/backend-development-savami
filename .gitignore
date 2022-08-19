@@ -2,3 +2,5 @@ vendor
 backup
 todo.txt
 public/images
+.idea
+.DS_Store
