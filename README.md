@@ -36,15 +36,15 @@
 - Ability to edit/delete from the "Check all listings" 
 
 ## Unfinished ideas
-~- A small profile div on the user's management page that allows the user to change their name, email and password~
+- ~A small profile div on the user's management page that allows the user to change their name, email and password~
 - Adding a profile picture to the user
 - Displaying the profile picture on the "Check All Listings" page
 - Being able to change the user role through the admin panel
 - Being able to fully manage the database through the admin panel, without having to use a database client
-~- Changing user information (name, username, email, password)~
+- ~Changing user information (name, username, email, password)~
 - There are a lot of styling bugs (mostly used tailwind components that were slightly edited and therefore breaking them slightly)
-~- There might be small redirection errors that I have overlooked. I only had 30 minutes to test the whole functionality.~
-~- There might be some pages that lack styling~
+- ~There might be small redirection errors that I have overlooked. I only had 30 minutes to test the whole functionality.~
+- ~There might be some pages that lack styling~
 
 ## Styling
 - All styling is done by using the Tailwind CDN
