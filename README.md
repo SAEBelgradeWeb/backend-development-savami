@@ -49,3 +49,11 @@
 ## Styling
 - All styling is done by using the Tailwind CDN
 - Most elements are edited existing tailwind components (to save time)
+
+## JavaScript
+JavaScript was not used much throughout the project. It was used in the following cases:
+- Deleting a user/listing -> Confirms "Are you sure?" and redirects
+- On the profile page, when clicking the apply changes button, within PHP the function sleeps for 6 seconds. In these 6 seconds JavaScript is used to display 2 messages.
+  - Message 1: Confirms the changes have been made successfully
+  - Message 2: Notifies the user they will be logged out to apply the changes
+  - Proceeds to kill the session and redirects back to the home page
