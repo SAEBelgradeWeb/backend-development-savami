@@ -21,6 +21,8 @@
 ### Basic
 - Admin Panel navigation button that only displays when logged in as admin
 - Ability to edit/delete listings from the "Check all listings" page
+    - User can only edit/delete listings that the user is owner of
+    - Admin can edit/delete all
 
 ### Admin Panel
 #### Shows total amount of posts and total amount of users at the top of the admin panel
